@@ -53,7 +53,7 @@ function UpperBracket() {
               ))}
             </div>
             <Game />
-          </div>asd
+          </div>
         ) : (
           ""
         )}
@@ -70,7 +70,6 @@ function UpperBracket() {
                 />
               ))}
             </div>
-            <Game />
           </div>
         ) : (
           ""
