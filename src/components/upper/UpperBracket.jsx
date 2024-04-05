@@ -23,30 +23,36 @@ function UpperBracket() {
           ))}
         </div>
         {secondUpperPlayers.length > 0 ? (
-          <div className="secondUpperBracket">
-            {secondUpperPlayers.map((versus, i) => (
-              <Game
-                key={i}
-                playerone={versus[0]}
-                playertwo={versus[1]}
-                id={`upperSecond${i}`}
-              />
-            ))}
+          <div className="second">
+            <div className="secondUpperBracket">
+              {secondUpperPlayers.map((versus, i) => (
+                <Game
+                  key={i}
+                  playerone={versus[0]}
+                  playertwo={versus[1]}
+                  id={`upperSecond${i}`}
+                />
+              ))}
+            </div>
+            <Game />
           </div>
         ) : (
           ""
         )}
         {/* third round */}
         {thirdUpperPlayers.length > 0 ? (
-          <div className="thirdUpperBracket">
-            {thirdUpperPlayers.map((versus, i) => (
-              <Game
-                key={i}
-                playerone={versus[0]}
-                playertwo={versus[1]}
-                id={`upperThird${i}`}
-              />
-            ))}
+          <div className="third">
+            <div className="thirdUpperBracket">
+              {thirdUpperPlayers.map((versus, i) => (
+                <Game
+                  key={i}
+                  playerone={versus[0]}
+                  playertwo={versus[1]}
+                  id={`upperThird${i}`}
+                />
+              ))}
+            </div>
+            <Game />
           </div>
         ) : (
           ""
