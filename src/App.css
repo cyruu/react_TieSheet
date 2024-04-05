@@ -3,7 +3,7 @@
   font-family: sans-serif;
 }
 body {
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   background-color: gray;
 }
 .game {

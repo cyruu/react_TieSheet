@@ -53,6 +53,24 @@ function UpperBracket() {
               ))}
             </div>
             <Game />
+          </div>asd
+        ) : (
+          ""
+        )}
+        {/* third round */}
+        {thirdUpperPlayers.length > 0 ? (
+          <div className="third">
+            <div className="thirdUpperBracket">
+              {thirdUpperPlayers.map((versus, i) => (
+                <Game
+                  key={i}
+                  playerone={versus[0]}
+                  playertwo={versus[1]}
+                  id={`upperThird${i}`}
+                />
+              ))}
+            </div>
+            <Game />
           </div>
         ) : (
           ""
