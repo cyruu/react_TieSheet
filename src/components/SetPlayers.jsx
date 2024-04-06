@@ -12,6 +12,7 @@ import {
   setInitialLowerSecondRound,
   setInitialLowerThirdRound,
   setInitialLowerForthRound,
+  setInitialLowerFinal,
 } from "../redux/slice";
 import PlayerInput from "./PlayerInput";
 import Game from "./Game";
@@ -47,6 +48,8 @@ function SetPlayers() {
     dis(setInitialLowerThirdRound());
     // set lower forth stage
     dis(setInitialLowerForthRound());
+    // set lower final
+    dis(setInitialLowerFinal());
   }, []);
   useEffect(() => {
     let tempPlayers = [];

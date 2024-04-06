@@ -14,25 +14,53 @@ function Player({ title, id, name }) {
     return function () {
       const selectedRadioButton = document.getElementById(`radio${id}`);
       const radioId = selectedRadioButton.id;
+      let loserIndex = "";
+      if (radioId[radioId.length - 1] == "0") loserIndex = "1";
+      else loserIndex = "0";
       //winner of uppperFirst0
       if (radioId.includes("upperFirst0")) {
-        dis(winnerOfUpperFirst0({ winner: radioId[radioId.length - 1] }));
+        dis(
+          winnerOfUpperFirst0({
+            winner: radioId[radioId.length - 1],
+            loser: loserIndex,
+          })
+        );
       }
       //winner of uppperFirst1
       else if (radioId.includes("upperFirst1")) {
-        dis(winnerOfUpperFirst1({ winner: radioId[radioId.length - 1] }));
+        dis(
+          winnerOfUpperFirst1({
+            winner: radioId[radioId.length - 1],
+            loser: loserIndex,
+          })
+        );
       }
       //winner of uppperFirst2
       else if (radioId.includes("upperFirst2")) {
-        dis(winnerOfUpperFirst2({ winner: radioId[radioId.length - 1] }));
+        dis(
+          winnerOfUpperFirst2({
+            winner: radioId[radioId.length - 1],
+            loser: loserIndex,
+          })
+        );
       }
       //winner of uppperFirst3
       else if (radioId.includes("upperFirst3")) {
-        dis(winnerOfUpperFirst3({ winner: radioId[radioId.length - 1] }));
+        dis(
+          winnerOfUpperFirst3({
+            winner: radioId[radioId.length - 1],
+            loser: loserIndex,
+          })
+        );
       }
       //winner of uppperSecond0
       else if (radioId.includes("upperSecond0")) {
-        dis(winnerOfUpperSecond0({ winner: radioId[radioId.length - 1] }));
+        dis(
+          winnerOfUpperSecond0({
+            winner: radioId[radioId.length - 1],
+            loser: loserIndex,
+          })
+        );
       }
       //winner of uppperSecond1
       else if (radioId.includes("upperSecond1")) {
