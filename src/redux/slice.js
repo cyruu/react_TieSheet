@@ -14,7 +14,7 @@ const slice = createSlice({
     lowerVersusPlayers: [],
     secondLowerPlayers: [],
     thirdLowerPlayers: [],
-    grandFinalPlayers: [],
+    grandFinalPlayers: [["", ""]],
     lowerFinalPlayers: [["", ""]],
   },
   reducers: {
@@ -144,10 +144,10 @@ const slice = createSlice({
         return {
           ...state,
           upperFinalPlayers: [
-            [state.allPlayers[winner], state.secondUpperPlayers[0][1]],
+            [state.versusPlayers[0][winner], state.upperFinalPlayers[0][1]],
           ],
           lowerVersusPlayers: [
-            [state.allPlayers[loser], state.lowerVersusPlayers[0][1]],
+            [state.versusPlayers[0][loser], state.lowerVersusPlayers[0][1]],
           ],
         };
       }
@@ -311,6 +311,9 @@ const slice = createSlice({
         lowerFinalPlayers: [
           [state.upperFinalPlayers[0][loser], state.lowerFinalPlayers[0][1]],
         ],
+        grandFinalPlayers: [
+          [state.upperFinalPlayers[0][winner], state.grandFinalPlayers[0][1]],
+        ],
       };
     },
 
@@ -330,8 +333,10 @@ const slice = createSlice({
         return {
           ...state,
           lowerFinalPlayers: [
-            state.lowerFinalPlayers[0][0],
-            state.lowerVersusPlayers[0][winner],
+            [
+              state.lowerFinalPlayers[0][0],
+              state.lowerVersusPlayers[0][winner],
+            ],
           ],
         };
       }
@@ -360,6 +365,15 @@ const slice = createSlice({
         ...state,
         lowerFinalPlayers: [
           [state.lowerFinalPlayers[0][0], state.thirdLowerPlayers[0][winner]],
+        ],
+      };
+    },
+    winnerOfLoserFinal: (state, action) => {
+      const winner = Number(action.payload.winner);
+      return {
+        ...state,
+        grandFinalPlayers: [
+          [state.grandFinalPlayers[0][0], state.lowerFinalPlayers[0][winner]],
         ],
       };
     },
@@ -392,5 +406,6 @@ export const {
   winnerOfLowerSecond,
   winnerOfLowerThird,
   winnerOfUpperFinal,
+  winnerOfLoserFinal,
 } = slice.actions;
 export default slice.reducer;

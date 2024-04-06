@@ -14,6 +14,7 @@ function UpperBracket() {
 
   const allPlayers = useSelector((state) => state.allPlayers);
   const thirdUpperPlayers = useSelector((state) => state.thirdUpperPlayers);
+  const grandFinalPlayers = useSelector((state) => state.grandFinalPlayers);
 
   return (
     <div className="upperBracket">
@@ -104,6 +105,16 @@ function UpperBracket() {
         ) : (
           ""
         )}
+        <div className="grandFinal">
+          <p>Grand finals</p>
+          <div className="upperFinalBracket">
+            <Game
+              playerone={grandFinalPlayers[0][0]}
+              playertwo={grandFinalPlayers[0][1]}
+              id={`upperFinal`}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

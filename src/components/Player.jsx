@@ -15,6 +15,7 @@ import {
   winnerOfLowerSecond,
   winnerOfLowerThird,
   winnerOfUpperFinal,
+  winnerOfLoserFinal,
 } from "../redux/slice";
 function Player({ title, id, name }) {
   const dis = useDispatch();
@@ -144,6 +145,14 @@ function Player({ title, id, name }) {
       else if (radioId.includes("lowerThird")) {
         dis(
           winnerOfLowerThird({
+            winner: radioId[radioId.length - 1],
+          })
+        );
+      }
+      //winner of losers final
+      else if (radioId.includes("loserFinal")) {
+        dis(
+          winnerOfLoserFinal({
             winner: radioId[radioId.length - 1],
           })
         );

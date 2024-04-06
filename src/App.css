@@ -147,7 +147,8 @@ body {
 .lowersecond,
 .lowerthird,
 .lowerforth,
-.lowerfinal {
+.lowerfinal,
+.grandFinal {
   margin-left: 2rem;
 }
 input[type="radio"] {
@@ -160,6 +161,7 @@ p {
   transform: translateY(300%);
 }
 .third p,
-.upperFinal p {
+.upperFinal p,
+.grandFinal p {
   transform: translateY(900%);
 }

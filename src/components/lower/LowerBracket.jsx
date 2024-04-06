@@ -8,7 +8,8 @@ function LowerBracket() {
   const thirdLowerPlayers = useSelector((state) => state.thirdLowerPlayers);
   // const forthLowerPlayers = useSelector((state) => state.forthLowerPlayers);
   const lowerFinalPlayers = useSelector((state) => state.lowerFinalPlayers);
-  console.log("lower versus", lowerVersusPlayers);
+  const grandFinalPlayers = useSelector((state) => state.grandFinalPlayers);
+  console.log("grand final", grandFinalPlayers);
   return (
     <>
       <div className="lowerBracket">
@@ -68,6 +69,7 @@ function LowerBracket() {
               <Game
                 playerone={lowerFinalPlayers[0][0]}
                 playertwo={lowerFinalPlayers[0][1]}
+                id={`loserFinal`}
               />
             </div>
           </div>
