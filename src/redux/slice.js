@@ -9,6 +9,7 @@ const slice = createSlice({
     secondUpperPlayers: [],
     secondUpperLoserPlayers: [["", ""]],
     thirdUpperPlayers: [],
+    thirdUpperLoserPlayers: [["", ""]],
     upperFinalPlayers: [],
     lowerVersusPlayers: [],
     secondLowerPlayers: [],
@@ -241,7 +242,7 @@ const slice = createSlice({
     },
     winnerOfUpperSecond1: (state, action) => {
       const winner = Number(action.payload.winner);
-
+      const loser = Number(action.payload.loser);
       if (state.noOfPlayers == 8) {
         return {
           ...state,
@@ -251,14 +252,61 @@ const slice = createSlice({
               state.secondUpperPlayers[1][winner],
             ],
           ],
+          secondUpperLoserPlayers: [
+            [
+              state.secondUpperLoserPlayers[0][0],
+              state.secondUpperPlayers[1][loser],
+            ],
+          ],
         };
       }
+    },
+    winnerOfUpperSecondLoser: (state, action) => {
+      const winner = Number(action.payload.winner);
+      const loser = Number(action.payload.loser);
+      return {
+        ...state,
+        thirdUpperLoserPlayers: [
+          [
+            state.thirdUpperLoserPlayers[0][0],
+            state.secondUpperLoserPlayers[0][winner],
+          ],
+        ],
+      };
+    },
+    winnerOfUpperThird: (state, action) => {
+      const winner = Number(action.payload.winner);
+      const loser = Number(action.payload.loser);
+      return {
+        ...state,
+        upperFinalPlayers: [
+          [state.thirdUpperPlayers[0][winner], state.upperFinalPlayers[0][1]],
+        ],
+        thirdUpperLoserPlayers: [
+          [
+            state.thirdUpperPlayers[0][loser],
+            state.thirdUpperLoserPlayers[0][1],
+          ],
+        ],
+      };
+    },
+    winnerOfUpperThirdLoser: (state, action) => {
+      const winner = Number(action.payload.winner);
+      const loser = Number(action.payload.loser);
+      return {
+        ...state,
+        upperFinalPlayers: [
+          [
+            state.upperFinalPlayers[0][0],
+            state.thirdUpperLoserPlayers[0][winner],
+          ],
+        ],
+      };
     },
   },
 });
 export const {
   increasePlayer,
-
   decreasePlayer,
   getAllPlayers,
   versusAllPlayers,
@@ -276,5 +324,8 @@ export const {
   setInitialLowerThirdRound,
   setInitialLowerForthRound,
   setInitialLowerFinal,
+  winnerOfUpperSecondLoser,
+  winnerOfUpperThird,
+  winnerOfUpperThirdLoser,
 } = slice.actions;
 export default slice.reducer;

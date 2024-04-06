@@ -3,7 +3,7 @@ import Game from "../Game";
 import { useSelector } from "react-redux";
 function LowerBracket() {
   const lowerVersusPlayers = useSelector((state) => state.lowerVersusPlayers);
-  console.log(lowerVersusPlayers);
+  // console.log(lowerVersusPlayers);
   const secondLowerPlayers = useSelector((state) => state.secondLowerPlayers);
   const thirdLowerPlayers = useSelector((state) => state.thirdLowerPlayers);
   const forthLowerPlayers = useSelector((state) => state.forthLowerPlayers);

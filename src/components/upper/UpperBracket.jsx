@@ -5,10 +5,13 @@ function UpperBracket() {
   const versusArray = useSelector((state) => state.versusPlayers);
   const secondUpperPlayers = useSelector((state) => state.secondUpperPlayers);
   const upperFinalPlayers = useSelector((state) => state.upperFinalPlayers);
+  const thirdUpperLoserPlayers = useSelector(
+    (state) => state.thirdUpperLoserPlayers
+  );
   const secondUpperLoserPlayers = useSelector(
     (state) => state.secondUpperLoserPlayers
   );
-  console.log("sec losers", secondUpperLoserPlayers);
+  console.log("third loesrs", thirdUpperLoserPlayers);
   const allPlayers = useSelector((state) => state.allPlayers);
   const thirdUpperPlayers = useSelector((state) => state.thirdUpperPlayers);
 
@@ -43,7 +46,15 @@ function UpperBracket() {
                 />
               ))}
             </div>
-            {allPlayers.length == 8 ? <Game /> : ""}
+            {allPlayers.length == 8 ? (
+              <Game
+                playerone={secondUpperLoserPlayers[0][0]}
+                playertwo={secondUpperLoserPlayers[0][1]}
+                id={`uppersecondloser`}
+              />
+            ) : (
+              ""
+            )}
           </div>
         ) : (
           ""
@@ -62,7 +73,15 @@ function UpperBracket() {
                 />
               ))}
             </div>
-            {allPlayers.length == 8 ? <Game /> : ""}
+            {allPlayers.length == 8 ? (
+              <Game
+                playerone={thirdUpperLoserPlayers[0][0]}
+                playertwo={thirdUpperLoserPlayers[0][1]}
+                id={`upperthirdloser`}
+              />
+            ) : (
+              ""
+            )}
           </div>
         ) : (
           ""
