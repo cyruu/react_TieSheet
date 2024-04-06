@@ -10,6 +10,11 @@ import {
   winnerOfUpperSecondLoser,
   winnerOfUpperThird,
   winnerOfUpperThirdLoser,
+  winnerOfLowerFirst0,
+  winnerOfLowerFirst1,
+  winnerOfLowerSecond,
+  winnerOfLowerThird,
+  winnerOfUpperFinal,
 } from "../redux/slice";
 function Player({ title, id, name }) {
   const dis = useDispatch();
@@ -98,6 +103,48 @@ function Player({ title, id, name }) {
           winnerOfUpperThirdLoser({
             winner: radioId[radioId.length - 1],
             loser: loserIndex,
+          })
+        );
+      }
+      //winner of upper final
+      else if (radioId.includes("upperFinal")) {
+        dis(
+          winnerOfUpperFinal({
+            winner: radioId[radioId.length - 1],
+            loser: loserIndex,
+          })
+        );
+      }
+
+      // winner of lower first 0
+      else if (radioId.includes("lowerFirst0")) {
+        dis(
+          winnerOfLowerFirst0({
+            winner: radioId[radioId.length - 1],
+          })
+        );
+      }
+      // winner of lower first 1
+      else if (radioId.includes("lowerFirst1")) {
+        dis(
+          winnerOfLowerFirst1({
+            winner: radioId[radioId.length - 1],
+          })
+        );
+      }
+      // winner of lower second
+      else if (radioId.includes("lowerSecond")) {
+        dis(
+          winnerOfLowerSecond({
+            winner: radioId[radioId.length - 1],
+          })
+        );
+      }
+      // winner of lower third
+      else if (radioId.includes("lowerThird")) {
+        dis(
+          winnerOfLowerThird({
+            winner: radioId[radioId.length - 1],
           })
         );
       }

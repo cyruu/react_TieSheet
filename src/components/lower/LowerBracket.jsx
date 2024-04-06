@@ -6,8 +6,9 @@ function LowerBracket() {
   // console.log(lowerVersusPlayers);
   const secondLowerPlayers = useSelector((state) => state.secondLowerPlayers);
   const thirdLowerPlayers = useSelector((state) => state.thirdLowerPlayers);
-  const forthLowerPlayers = useSelector((state) => state.forthLowerPlayers);
+  // const forthLowerPlayers = useSelector((state) => state.forthLowerPlayers);
   const lowerFinalPlayers = useSelector((state) => state.lowerFinalPlayers);
+  console.log("lower versus", lowerVersusPlayers);
   return (
     <>
       <div className="lowerBracket">
@@ -60,34 +61,14 @@ function LowerBracket() {
           ) : (
             ""
           )}
-          {forthLowerPlayers.length > 0 ? (
-            <div className="lowerforth">
-              <p>forth</p>
-              <div className="secondLowerBracket">
-                {forthLowerPlayers.map((versus, i) => (
-                  <Game
-                    key={i}
-                    playerone={versus[0]}
-                    playertwo={versus[1]}
-                    id={`lowerForth${i}`}
-                  />
-                ))}
-              </div>
-            </div>
-          ) : (
-            ""
-          )}
+
           <div className="lowerfinal">
             <p>Lower final</p>
             <div className="secondLowerBracket">
-              {lowerFinalPlayers.map((versus, i) => (
-                <Game
-                  key={i}
-                  playerone={versus[0]}
-                  playertwo={versus[1]}
-                  id={`lowerFinal${i}`}
-                />
-              ))}
+              <Game
+                playerone={lowerFinalPlayers[0][0]}
+                playertwo={lowerFinalPlayers[0][1]}
+              />
             </div>
           </div>
         </div>

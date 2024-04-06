@@ -11,7 +11,7 @@ function UpperBracket() {
   const secondUpperLoserPlayers = useSelector(
     (state) => state.secondUpperLoserPlayers
   );
-  console.log("third loesrs", thirdUpperLoserPlayers);
+
   const allPlayers = useSelector((state) => state.allPlayers);
   const thirdUpperPlayers = useSelector((state) => state.thirdUpperPlayers);
 
