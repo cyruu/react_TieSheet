@@ -7,6 +7,7 @@ import {
   versusAllPlayers,
   setInitialUpperSecondRound,
   setInitialUpperThirdRound,
+  setInitialUpperFinal,
 } from "../redux/slice";
 import PlayerInput from "./PlayerInput";
 import Game from "./Game";
@@ -18,7 +19,7 @@ function SetPlayers() {
   const khelam = useCallback(() => {
     const inputs = document.querySelectorAll(".playerInput input");
     const allPlayersArray = Array.from(inputs).map((input) => input.value);
-    console.log(allPlayersArray);
+
     const versusArray = [];
     for (let i = 0; i < allPlayersArray.length; i += 2) {
       versusArray.push(allPlayersArray.slice(i, i + 2));
@@ -32,6 +33,8 @@ function SetPlayers() {
     dis(setInitialUpperSecondRound());
     // set upper second Round
     dis(setInitialUpperThirdRound());
+    // set upper final
+    dis(setInitialUpperFinal());
   }, []);
   useEffect(() => {
     let tempPlayers = [];

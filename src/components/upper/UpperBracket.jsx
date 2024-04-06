@@ -4,10 +4,11 @@ import { useSelector } from "react-redux";
 function UpperBracket() {
   const versusArray = useSelector((state) => state.versusPlayers);
   const secondUpperPlayers = useSelector((state) => state.secondUpperPlayers);
+  const upperFinalPlayers = useSelector((state) => state.upperFinalPlayers);
 
   const allPlayers = useSelector((state) => state.allPlayers);
   const thirdUpperPlayers = useSelector((state) => state.thirdUpperPlayers);
-  console.log("third", thirdUpperPlayers);
+  console.log("upperfinal", upperFinalPlayers);
   return (
     <div className="upperBracket">
       <h1>Upper Bracket</h1>
@@ -34,7 +35,7 @@ function UpperBracket() {
                 />
               ))}
             </div>
-            <Game />
+            {allPlayers.length == 8 ? <Game /> : ""}
           </div>
         ) : (
           ""
@@ -52,21 +53,21 @@ function UpperBracket() {
                 />
               ))}
             </div>
-            <Game />
+            {allPlayers.length == 8 ? <Game /> : ""}
           </div>
         ) : (
           ""
         )}
-        {/* third round */}
-        {thirdUpperPlayers.length > 0 ? (
-          <div className="third">
-            <div className="thirdUpperBracket">
-              {thirdUpperPlayers.map((versus, i) => (
+        {/* upper finals */}
+        {upperFinalPlayers.length > 0 ? (
+          <div className="forth">
+            <div className="upperFinalBracket">
+              {upperFinalPlayers.map((versus, i) => (
                 <Game
                   key={i}
                   playerone={versus[0]}
                   playertwo={versus[1]}
-                  id={`upperThird${i}`}
+                  id={`upperFinal${i}`}
                 />
               ))}
             </div>
