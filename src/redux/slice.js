@@ -9,6 +9,10 @@ const slice = createSlice({
     secondUpperPlayers: [],
     thirdUpperPlayers: [],
     upperFinalPlayers: [],
+    lowerVersusPlayers: [],
+    secondLowerPlayers: [],
+    thirdLowerPlayers: [],
+    forthLowerPlayers: [],
   },
   reducers: {
     increasePlayer: (state, action) => {
@@ -76,6 +80,48 @@ const slice = createSlice({
         ...state,
         upperFinalPlayers: players,
       };
+    },
+    setInitialLowerVersus: (state, action) => {
+      const totalGames = Math.floor(state.noOfPlayers / 4);
+      const players = [];
+      for (let i = 0; i < totalGames; i++) {
+        players.push(["", ""]);
+      }
+
+      return {
+        ...state,
+        lowerVersusPlayers: players,
+      };
+    },
+    setInitialLowerSecondRound: (state, action) => {
+      if (state.noOfPlayers == 8) {
+        const players = [["", ""]];
+
+        return {
+          ...state,
+          secondLowerPlayers: players,
+        };
+      }
+    },
+    setInitialLowerThirdRound: (state, action) => {
+      if (state.noOfPlayers == 8) {
+        const players = [["", ""]];
+
+        return {
+          ...state,
+          thirdLowerPlayers: players,
+        };
+      }
+    },
+    setInitialLowerForthRound: (state, action) => {
+      if (state.noOfPlayers == 8) {
+        const players = [["", ""]];
+
+        return {
+          ...state,
+          forthLowerPlayers: players,
+        };
+      }
     },
     winnerOfUpperFirst0: (state, action) => {
       const winner = Number(action.payload.winner);
@@ -189,5 +235,9 @@ export const {
   winnerOfUpperSecond0,
   winnerOfUpperSecond1,
   setInitialUpperFinal,
+  setInitialLowerVersus,
+  setInitialLowerSecondRound,
+  setInitialLowerThirdRound,
+  setInitialLowerForthRound,
 } = slice.actions;
 export default slice.reducer;

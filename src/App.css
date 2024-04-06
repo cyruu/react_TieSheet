@@ -128,7 +128,9 @@ body {
 .firstUpperBracket,
 .secondUpperBracket,
 .thirdUpperBracket,
-.upperFinalBracket {
+.upperFinalBracket,
+.firstLowerBracket,
+.secondLowerBracket {
   height: 100%;
 
   /* background-color: yellow; */
