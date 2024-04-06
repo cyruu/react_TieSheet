@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const slice = createSlice({
   name: "slice",
   initialState: {
-    noOfPlayers: 0,
+    noOfPlayers: 4,
     allPlayers: [],
     versusPlayers: [],
     secondUpperPlayers: [],
@@ -28,7 +28,7 @@ const slice = createSlice({
       }
     },
     decreasePlayer: (state, action) => {
-      if (state.noOfPlayers != 0) {
+      if (state.noOfPlayers != 4) {
         return {
           ...state,
 

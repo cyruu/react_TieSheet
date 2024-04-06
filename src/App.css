@@ -1,11 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Rammetto+One&family=Rubik+Scribble&display=swap");
 * {
   margin: 0;
   font-family: sans-serif;
 }
 body {
-  /* overflow-x: hidden; */
-  background-color: gray;
+  background-color: rgb(45, 45, 45);
+  overflow-x: hidden;
 }
+
 .game {
   height: 70px;
   width: 200px;
@@ -28,28 +30,34 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: yellow; */
+  background-color: rgb(219, 219, 219);
+  color: black;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 .playerName:hover {
-  background-color: rgb(189, 189, 189);
+  background-color: rgba(0, 128, 0, 0.3);
 }
 .setPlayersContainer {
+  position: fixed;
   height: 100vh;
   width: 100vw;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  /* background-color: blue; */
+  color: white;
+  background-color: rgb(45, 45, 45);
+  z-index: 10;
 }
 .setPlayersContainer p {
   font-size: 1.5rem;
   margin: 10vh 0 2vh;
 }
+
 #noOfPlayer,
 .countButton {
+  font-size: 1.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -66,16 +74,17 @@ body {
   cursor: pointer;
   height: 100%;
   width: 30%;
-  color: white;
-  background-color: rgb(59, 191, 145);
+  color: rgb(45, 45, 45);
+  background-color: rgb(224, 224, 224);
   border-radius: 50%;
 }
 .setPlayers {
+  margin-top: 1rem;
   width: 40%;
-  min-height: 10vh;
+  min-height: 52vh;
   display: grid;
   justify-items: stretch;
-
+  align-content: flex-start;
   grid-template-columns: repeat(2, 1fr);
   /* background-color: red; */
 }
@@ -84,25 +93,25 @@ body {
   align-items: center;
   justify-content: space-between;
   /* background-color: blue; */
-  margin: 1.7rem 0;
+  margin: 1.3rem 0;
 }
 .playerInput input {
-  /* background-color: blue; */
   border: 1px solid gray;
   font-size: 1.1rem;
   border-radius: 8px;
-  width: 70%;
-  padding: 0.6rem 0.8rem;
+  width: 60%;
+  padding: 0.5rem 0.75rem;
   outline: none;
 }
 
 .versus {
   height: 0.06rem;
-  width: 50px;
+  width: 40px;
   background-color: rgb(182, 182, 182);
 }
 .upperBracket,
 .lowerBracket {
+  color: rgb(219, 219, 219);
   height: 100vh;
   min-width: 100vw;
   display: flex;
@@ -110,6 +119,8 @@ body {
 }
 .upperBracket h1,
 .lowerBracket h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
   height: 10vh;
   display: flex;
   justify-content: center;
@@ -119,7 +130,7 @@ body {
 .upperGames,
 .lowerGames {
   height: 62vh;
-  width: 90vw;
+
   margin-left: 2rem;
   display: flex;
   /* justify-content: space-around; */
@@ -162,6 +173,77 @@ p {
 }
 .third p,
 .upperFinal p,
-.grandFinal p {
+.grandFinal p,
+.lowersecond p,
+.lowerthird p,
+.lowerfinal p {
   transform: translateY(900%);
+}
+
+.numberPlayer {
+  font-family: "Rammetto One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.generateButton {
+  font-size: 1.2rem;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+
+  border: none;
+  outline: none;
+  background-color: rgb(255, 255, 255);
+  cursor: pointer;
+  margin-left: 4rem;
+}
+.labelwinner {
+  background-color: rgba(0, 128, 0, 0.3);
+}
+.labelloser {
+  background-color: rgba(128, 0, 0, 0.3);
+}
+
+@media only screen and (max-width: 431px) {
+  body {
+    overflow-x: auto;
+  }
+  .upperBracket h1,
+  .lowerBracket h1 {
+    font-size: 1.7rem;
+  }
+  .game {
+    height: 50px;
+    width: 140px;
+    margin-bottom: 0;
+  }
+  .playerName {
+    font-size: 0.8rem;
+  }
+  .setPlayersContainer p {
+    font-size: 0.2rem;
+    margin: 3vh 0 2vh;
+  }
+  .setPlayers {
+    margin-top: 2rem;
+    width: 85%;
+    min-height: 42vh;
+  }
+  .playerInput {
+    margin: 0.9rem 0;
+  }
+  .playerInput input {
+    font-size: 0.9rem;
+
+    width: 100%;
+  }
+  .generateButtons {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .generateButton {
+    font-size: 0.9rem;
+    margin-left: 0rem;
+  }
 }

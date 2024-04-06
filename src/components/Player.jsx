@@ -26,11 +26,28 @@ function Player({ title, id, name }) {
       let loserIndex = "";
       if (radioId[radioId.length - 1] == "0") loserIndex = "1";
       else loserIndex = "0";
+      const winnerIndex = radioId[radioId.length - 1];
       //winner of uppperFirst0
+      const label = document.getElementById("label" + id);
+      const labelIndex = label.id[label.id.length - 1];
+      label.classList.remove("labelloser");
+      label.classList.add("labelwinner");
+      if (labelIndex == "0") {
+        const newId = label.id.slice(0, label.id.length - 1) + "1";
+        const anotherLabel = document.getElementById(newId);
+        anotherLabel.classList.remove("labelwinner");
+        anotherLabel.classList.add("labelloser");
+      } else if (labelIndex == "1") {
+        const newId = label.id.slice(0, label.id.length - 1) + "0";
+        const anotherLabel = document.getElementById(newId);
+        anotherLabel.classList.remove("labelwinner");
+        anotherLabel.classList.add("labelloser");
+      }
+      // all reducers
       if (radioId.includes("upperFirst0")) {
         dis(
           winnerOfUpperFirst0({
-            winner: radioId[radioId.length - 1],
+            winner: winnerIndex,
             loser: loserIndex,
           })
         );
@@ -39,7 +56,7 @@ function Player({ title, id, name }) {
       else if (radioId.includes("upperFirst1")) {
         dis(
           winnerOfUpperFirst1({
-            winner: radioId[radioId.length - 1],
+            winner: winnerIndex,
             loser: loserIndex,
           })
         );
@@ -48,7 +65,7 @@ function Player({ title, id, name }) {
       else if (radioId.includes("upperFirst2")) {
         dis(
           winnerOfUpperFirst2({
-            winner: radioId[radioId.length - 1],
+            winner: winnerIndex,
             loser: loserIndex,
           })
         );
@@ -57,7 +74,7 @@ function Player({ title, id, name }) {
       else if (radioId.includes("upperFirst3")) {
         dis(
           winnerOfUpperFirst3({
-            winner: radioId[radioId.length - 1],
+            winner: winnerIndex,
             loser: loserIndex,
           })
         );
@@ -66,7 +83,7 @@ function Player({ title, id, name }) {
       else if (radioId.includes("upperSecond0")) {
         dis(
           winnerOfUpperSecond0({
-            winner: radioId[radioId.length - 1],
+            winner: winnerIndex,
             loser: loserIndex,
           })
         );
@@ -75,7 +92,7 @@ function Player({ title, id, name }) {
       else if (radioId.includes("upperSecond1")) {
         dis(
           winnerOfUpperSecond1({
-            winner: radioId[radioId.length - 1],
+            winner: winnerIndex,
             loser: loserIndex,
           })
         );
@@ -84,7 +101,7 @@ function Player({ title, id, name }) {
       else if (radioId.includes("uppersecondloser")) {
         dis(
           winnerOfUpperSecondLoser({
-            winner: radioId[radioId.length - 1],
+            winner: winnerIndex,
             loser: loserIndex,
           })
         );
@@ -93,7 +110,7 @@ function Player({ title, id, name }) {
       else if (radioId.includes("upperThird")) {
         dis(
           winnerOfUpperThird({
-            winner: radioId[radioId.length - 1],
+            winner: winnerIndex,
             loser: loserIndex,
           })
         );
@@ -102,7 +119,7 @@ function Player({ title, id, name }) {
       else if (radioId.includes("upperthirdloser")) {
         dis(
           winnerOfUpperThirdLoser({
-            winner: radioId[radioId.length - 1],
+            winner: winnerIndex,
             loser: loserIndex,
           })
         );
@@ -111,7 +128,7 @@ function Player({ title, id, name }) {
       else if (radioId.includes("upperFinal")) {
         dis(
           winnerOfUpperFinal({
-            winner: radioId[radioId.length - 1],
+            winner: winnerIndex,
             loser: loserIndex,
           })
         );
@@ -121,7 +138,7 @@ function Player({ title, id, name }) {
       else if (radioId.includes("lowerFirst0")) {
         dis(
           winnerOfLowerFirst0({
-            winner: radioId[radioId.length - 1],
+            winner: winnerIndex,
           })
         );
       }
@@ -129,7 +146,7 @@ function Player({ title, id, name }) {
       else if (radioId.includes("lowerFirst1")) {
         dis(
           winnerOfLowerFirst1({
-            winner: radioId[radioId.length - 1],
+            winner: winnerIndex,
           })
         );
       }
@@ -137,7 +154,7 @@ function Player({ title, id, name }) {
       else if (radioId.includes("lowerSecond")) {
         dis(
           winnerOfLowerSecond({
-            winner: radioId[radioId.length - 1],
+            winner: winnerIndex,
           })
         );
       }
@@ -145,7 +162,7 @@ function Player({ title, id, name }) {
       else if (radioId.includes("lowerThird")) {
         dis(
           winnerOfLowerThird({
-            winner: radioId[radioId.length - 1],
+            winner: winnerIndex,
           })
         );
       }
@@ -153,7 +170,7 @@ function Player({ title, id, name }) {
       else if (radioId.includes("loserFinal")) {
         dis(
           winnerOfLoserFinal({
-            winner: radioId[radioId.length - 1],
+            winner: winnerIndex,
           })
         );
       }
@@ -165,6 +182,7 @@ function Player({ title, id, name }) {
         className="playerName"
         htmlFor={`radio${id}`}
         onClick={handleRadioClicked(id)}
+        id={`label${id}`}
       >
         {title}
         <input type="radio" name={name} id={`radio${id}`} />

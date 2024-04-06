@@ -11,14 +11,13 @@ import {
   setInitialLowerVersus,
   setInitialLowerSecondRound,
   setInitialLowerThirdRound,
-  setInitialLowerFinal,
 } from "../redux/slice";
 import PlayerInput from "./PlayerInput";
-import Game from "./Game";
+
 function SetPlayers() {
   const dis = useDispatch();
   const noOfplayers = useSelector((state) => state.noOfPlayers);
-  const secondUpperPlayers = useSelector((state) => state.secondUpperPlayers);
+
   const [playerInputs, setPlayerInputs] = useState([]);
   const khelam = useCallback(() => {
     const inputs = document.querySelectorAll(".playerInput input");
@@ -46,9 +45,13 @@ function SetPlayers() {
     // set lower third stage
     dis(setInitialLowerThirdRound());
 
-    // // set lower final
-    // dis(setInitialLowerFinal());
+    // hide this and show brackets
+    const setPlayersContainer = document.querySelector(".setPlayersContainer");
+    setPlayersContainer.style.opacity = "0";
+    setPlayersContainer.style.pointerEvents = "none";
   }, []);
+  //random khelam
+  const randomKhelam = useCallback(() => {}, []);
   useEffect(() => {
     let tempPlayers = [];
     for (let i = 0; i < noOfplayers; i++) {
@@ -58,7 +61,12 @@ function SetPlayers() {
   }, [noOfplayers]);
   return (
     <section className="setPlayersContainer">
-      <p>Kati jana khelni? (max 8)</p>
+      <p
+        className="numberPlayer   "
+        style={{ fontSize: "2.3rem", fontWeight: "bold" }}
+      >
+        Number&nbsp; Of&nbsp; Players?&nbsp;
+      </p>
       <div className="playerCount">
         <span className="countButton" onClick={() => dis(decreasePlayer())}>
           -
@@ -70,8 +78,12 @@ function SetPlayers() {
       </div>
       <div className="setPlayers">{playerInputs}</div>
       <div className="generateButtons">
-        <button onClick={khelam}>Khelam</button>
-        <button>Random khelam</button>
+        <button onClick={khelam} className="generateButton">
+          Khelam
+        </button>
+        <button onClick={randomKhelam} className="generateButton">
+          Random khelam
+        </button>
       </div>
     </section>
   );

@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Game from "../Game";
 import { useSelector } from "react-redux";
 function UpperBracket() {
   const versusArray = useSelector((state) => state.versusPlayers);
   const secondUpperPlayers = useSelector((state) => state.secondUpperPlayers);
   const upperFinalPlayers = useSelector((state) => state.upperFinalPlayers);
+  const noOfPlayers = useSelector((state) => state.noOfPlayers);
   const thirdUpperLoserPlayers = useSelector(
     (state) => state.thirdUpperLoserPlayers
   );
@@ -15,13 +16,23 @@ function UpperBracket() {
   const allPlayers = useSelector((state) => state.allPlayers);
   const thirdUpperPlayers = useSelector((state) => state.thirdUpperPlayers);
   const grandFinalPlayers = useSelector((state) => state.grandFinalPlayers);
+  useEffect(() => {
+    const firstRoundUpper = document.querySelector(".first p");
 
+    if (noOfPlayers == 4) {
+      firstRoundUpper.style.transform = "translateY(300%)";
+    } else if (noOfPlayers == 8) {
+      firstRoundUpper.style.transform = "translateY(0%)";
+    } else {
+      firstRoundUpper.style.transform = "";
+    }
+  }, [noOfPlayers]);
   return (
     <div className="upperBracket">
       <h1>Upper Bracket</h1>
       <div className="upperGames">
         <div className="first">
-          <p>First round</p>
+          <p>First Round</p>
           <div className="firstUpperBracket">
             {versusArray.map((versus, i) => (
               <Game
@@ -36,7 +47,7 @@ function UpperBracket() {
         {/* second round */}
         {secondUpperPlayers.length > 0 && allPlayers.length == 8 ? (
           <div className="second">
-            <p>second round</p>
+            <p>Second Round</p>
             <div className="secondUpperBracket">
               {secondUpperPlayers.map((versus, i) => (
                 <Game
@@ -63,7 +74,7 @@ function UpperBracket() {
         {/* third round */}
         {thirdUpperPlayers.length > 0 ? (
           <div className="third">
-            <p>third round</p>
+            <p>Third Round</p>
             <div className="thirdUpperBracket">
               {thirdUpperPlayers.map((versus, i) => (
                 <Game
@@ -90,7 +101,7 @@ function UpperBracket() {
         {/* upper finals */}
         {upperFinalPlayers.length > 0 ? (
           <div className="upperFinal">
-            <p>upper finals</p>
+            <p>Upper Finals</p>
             <div className="upperFinalBracket">
               {upperFinalPlayers.map((versus, i) => (
                 <Game
@@ -111,7 +122,7 @@ function UpperBracket() {
             <Game
               playerone={grandFinalPlayers[0][0]}
               playertwo={grandFinalPlayers[0][1]}
-              id={`upperFinal`}
+              id={`grandFinal`}
             />
           </div>
         </div>

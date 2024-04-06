@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Game from "../Game";
 import { useSelector } from "react-redux";
 function LowerBracket() {
@@ -6,17 +6,29 @@ function LowerBracket() {
   // console.log(lowerVersusPlayers);
   const secondLowerPlayers = useSelector((state) => state.secondLowerPlayers);
   const thirdLowerPlayers = useSelector((state) => state.thirdLowerPlayers);
+  const noOfPlayers = useSelector((state) => state.noOfPlayers);
   // const forthLowerPlayers = useSelector((state) => state.forthLowerPlayers);
   const lowerFinalPlayers = useSelector((state) => state.lowerFinalPlayers);
   const grandFinalPlayers = useSelector((state) => state.grandFinalPlayers);
-  console.log("grand final", grandFinalPlayers);
+
+  useEffect(() => {
+    const firstRoundLower = document.querySelector(".lowerfirst p");
+
+    if (noOfPlayers == 4) {
+      firstRoundLower.style.transform = "translateY(900%)";
+    } else if (noOfPlayers == 8) {
+      firstRoundLower.style.transform = "translateY(300%)";
+    } else {
+      firstRoundLower.style.transform = "";
+    }
+  }, [noOfPlayers]);
   return (
     <>
       <div className="lowerBracket">
         <h1>Lower Bracket</h1>
         <div className="lowerGames">
           <div className="lowerfirst">
-            <p>first round</p>
+            <p>First Round</p>
             <div className="firstLowerBracket">
               {lowerVersusPlayers.map((versus, i) => (
                 <Game
@@ -30,7 +42,7 @@ function LowerBracket() {
           </div>
           {secondLowerPlayers.length > 0 ? (
             <div className="lowersecond">
-              <p>second</p>
+              <p>Second Round</p>
               <div className="secondLowerBracket">
                 {secondLowerPlayers.map((versus, i) => (
                   <Game
@@ -47,7 +59,7 @@ function LowerBracket() {
           )}
           {thirdLowerPlayers.length > 0 ? (
             <div className="lowerthird">
-              <p>Third </p>
+              <p>Third Round</p>
               <div className="secondLowerBracket">
                 {thirdLowerPlayers.map((versus, i) => (
                   <Game
@@ -64,7 +76,7 @@ function LowerBracket() {
           )}
 
           <div className="lowerfinal">
-            <p>Lower final</p>
+            <p>Lower Final</p>
             <div className="secondLowerBracket">
               <Game
                 playerone={lowerFinalPlayers[0][0]}
