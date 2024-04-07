@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Game from "../Game";
 import { useSelector } from "react-redux";
+//lower bracker
 function LowerBracket() {
   const lowerVersusPlayers = useSelector((state) => state.lowerVersusPlayers);
   // console.log(lowerVersusPlayers);
