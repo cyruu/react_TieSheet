@@ -1,6 +1,7 @@
 import React from "react";
 
 function PlayerInput({ id }) {
+  // initial page
   return (
     <div
       className={`playerInput ${
