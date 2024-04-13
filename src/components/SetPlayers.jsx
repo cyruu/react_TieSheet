@@ -19,19 +19,23 @@ function SetPlayers() {
   const noOfplayers = useSelector((state) => state.noOfPlayers);
 
   const [playerInputs, setPlayerInputs] = useState([]);
-  const khelam = useCallback(() => {
+  const khelam = useCallback((e) => {
     const inputs = document.querySelectorAll(".playerInput input");
-    const allPlayersArray = Array.from(inputs).map((input) => input.value);
+    let allPlayersArray = Array.from(inputs).map((input) => input.value);
+    const buttonId = e.target.id;
 
     const versusArray = [];
+
+    if (buttonId == "randomKhelam") {
+      allPlayersArray = allPlayersArray.sort(() => Math.random() - 0.6);
+    }
     for (let i = 0; i < allPlayersArray.length; i += 2) {
       versusArray.push(allPlayersArray.slice(i, i + 2));
     }
-
-    // set all players - no impact
-    dis(getAllPlayers({ allPlayers: allPlayersArray }));
     // versusplayers
     dis(versusAllPlayers({ versusPlayers: versusArray }));
+    // set all players - no impact
+    dis(getAllPlayers({ allPlayers: allPlayersArray }));
     // set upper second Round
     dis(setInitialUpperSecondRound());
     // set upper second Round
@@ -78,10 +82,10 @@ function SetPlayers() {
       </div>
       <div className="setPlayers">{playerInputs}</div>
       <div className="generateButtons">
-        <button onClick={khelam} className="generateButton">
+        <button onClick={khelam} className="generateButton" id="khelam">
           Khelam
         </button>
-        <button onClick={randomKhelam} className="generateButton">
+        <button onClick={khelam} className="generateButton" id="randomKhelam">
           Random khelam
         </button>
       </div>
